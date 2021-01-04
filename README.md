@@ -8,7 +8,7 @@ As these word-images are smaller than images of complete text-lines, the NN can 
 3/4 of the words from the validation-set are correctly recognized and the character error rate is around 10%.
 I will give some hints how to extend the model in case you need larger input-images (e.g. to recognize text-lines) or want better recognition accuracy.
 
-![htr](./doc/htr.png)
+![htr](.HTR_Project/doc/htr.png)
 
 
 ## Run demo
@@ -18,7 +18,7 @@ Take care that the unzipped files are placed directly into the `model/` director
 Afterwards, go to the `src/` directory and run `python main.py`.
 The input image and the expected output is shown below.
 
-![test](./data/test.png)
+![test](.HTR_Project/data/test.png)
 
 ```
 > python main.py
