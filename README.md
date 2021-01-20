@@ -31,43 +31,13 @@ Probability: 0.96625507
 Tested with:
 
 * Python 2 and Python 3
-* TF 1.3, 1.10 and 1.12 (commit <= 97c2512)
-* TF 1.14, 1.15, 2.3.1 (commit >= ec00c1a)
+* TF 1.3, 1.10 and 1.12 
+* TF 1.14, 1.15, 2.3.1 
 * Ubuntu 16.04, 18.04 and Windows 7, 10
 
 
-## Command line arguments
-
-* `--train`: train the NN, details see below.
-* `--validate`: validate the NN, details see below.
-* `--beamsearch`: use vanilla beam search decoding (better, but slower) instead of best path decoding.
-* `--wordbeamsearch`: use word beam search decoding (only outputs words contained in a dictionary) instead of best path decoding. This is a custom TF operation and must be compiled from source, more information see corresponding section below. It should **not** be used when training the NN.
-* `--dump`: dumps the output of the NN to CSV file(s) saved in the `dump/` folder. Can be used as input for the [CTCDecoder](https://github.com/githubharald/CTCDecoder).
-
-If neither `--train` nor `--validate` is specified, the NN infers the text from the test image (`data/test.png`).
-Two examples: if you want to infer using beam search, execute `python main.py --beamsearch`, while you have to execute `python main.py --train --beamsearch` if you want to train the NN and do the validation using beam search.
 
 
-## Integrate word beam search decoding
-
-Besides the two decoders shipped with TF, it is possible to use word beam search decoding \[4\].
-Using this decoder, words are constrained to those contained in a dictionary, but arbitrary non-word character strings (numbers, punctuation marks) can still be recognized.
-The following illustration shows a sample for which word beam search is able to recognize the correct text, while the other decoders fail.
-
-![decoder_comparison](./doc/decoder_comparison.png)
-
-Follow these instructions to integrate word beam search decoding:
-
-1. Clone repository [CTCWordBeamSearch](https://github.com/githubharald/CTCWordBeamSearch).
-2. Compile custom TF operation (follow instructions given in README).
-3. Copy binary `TFWordBeamSearch.so` from the CTCWordBeamSearch repository to the `src/` directory of the SimpleHTR repository.
-
-Word beam search can now be enabled by setting the corresponding command line argument.
-The dictionary is created (in training and validation mode) by using all words contained in the IAM dataset (i.e. also including words from validation set) and is saved into the file `data/corpus.txt`.
-Further, the (manually created) list of word-characters can be found in the file `model/wordCharList.txt`.
-Beam width is set to 50 to conform with the beam width of vanilla beam search decoding.
-
-Using this configuration, a character error rate of 8% and a word accuracy of 84% is achieved.
 
 ## Train model 
 
@@ -120,10 +90,6 @@ Ground truth -> Recognized
 Character error rate: 13.956289%. Word accuracy: 67.721739%.
 ```
 
-### Other datasets
-
-Either convert your dataset to the IAM format (look at `words.txt` and the corresponding directory structure) or change the class `DataLoader` according to your dataset format.
-More information can be found in [this article](https://medium.com/@harald_scheidl/27648fb18519).
 
 
 ## Information about model
