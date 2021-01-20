@@ -108,7 +108,7 @@ The illustration below gives an overview of the NN (green: operations, pink: dat
 * The CTC layer either calculates the loss value given the matrix and the ground-truth text (when training), or it decodes the matrix to the final text with best path decoding or beam search decoding (when inferring)
 * Batch size is set to 50
 
-![nn_overview](./doc/nn_overview.png)
+![nn_overview](.HTR_Project/doc/nn_overview.png)
 
 
 ### Improve accuracy
@@ -144,5 +144,5 @@ As can be seen, the model is not translation invariant, as all training images f
 Adding data augmentation which uses random text-alignments can improve the translation invariance of the model.
 More information can be found in [this article](https://towardsdatascience.com/6c04864b8a98).
 
-![analyze](./doc/analyze.png)
+![analyze](.HTR_Project/doc/analyze.png)
 
