@@ -108,7 +108,7 @@ The illustration below gives an overview of the NN (green: operations, pink: dat
 * The CTC layer either calculates the loss value given the matrix and the ground-truth text (when training), or it decodes the matrix to the final text with best path decoding or beam search decoding (when inferring)
 * Batch size is set to 50
 
-![nn_overview](.HTR_Project/doc/nn_overview.png)
+![nn_overview](.HTR/HTR_Project/doc/nn_overview.png)
 
 
 ### Improve accuracy
